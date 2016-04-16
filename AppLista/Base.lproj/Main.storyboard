@@ -78,6 +78,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="done" destination="WyQ-tH-e76" id="8se-Ud-T0R"/>
+                        <outlet property="newItemText" destination="WXT-cO-zFE" id="QA0-Yx-bky"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <exit id="aLq-b9-h5E" userLabel="Exit" sceneMemberID="exit"/>

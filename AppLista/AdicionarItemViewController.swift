@@ -10,9 +10,22 @@ import UIKit
 
 class AdicionarItemViewController: UIViewController {
 
+    var newItem: String?
+    
+    @IBOutlet weak var doneBtn: UIBarButtonItem!
+
+    @IBOutlet weak var newItemText: UITextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        guard let botao = sender as? UIBarButtonItem where botao == doneButton else {
+            
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
