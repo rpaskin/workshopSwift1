@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		EDADD91B1CC2813F00A037E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDADD91A1CC2813F00A037E4 /* AppDelegate.swift */; };
-		EDADD91D1CC2813F00A037E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDADD91C1CC2813F00A037E4 /* ViewController.swift */; };
+		EDADD91D1CC2813F00A037E4 /* AdicionarItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDADD91C1CC2813F00A037E4 /* AdicionarItemViewController.swift */; };
 		EDADD9201CC2813F00A037E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDADD91E1CC2813F00A037E4 /* Main.storyboard */; };
 		EDADD9221CC2813F00A037E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDADD9211CC2813F00A037E4 /* Assets.xcassets */; };
 		EDADD9251CC2813F00A037E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDADD9231CC2813F00A037E4 /* LaunchScreen.storyboard */; };
 		EDADD9301CC2814000A037E4 /* AppListaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDADD92F1CC2814000A037E4 /* AppListaTests.swift */; };
 		EDADD93B1CC2814000A037E4 /* AppListaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDADD93A1CC2814000A037E4 /* AppListaUITests.swift */; };
+		EDADD9491CC2842900A037E4 /* ListaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDADD9481CC2842900A037E4 /* ListaTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,7 @@
 /* Begin PBXFileReference section */
 		EDADD9171CC2813F00A037E4 /* AppLista.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppLista.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDADD91A1CC2813F00A037E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EDADD91C1CC2813F00A037E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EDADD91C1CC2813F00A037E4 /* AdicionarItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdicionarItemViewController.swift; sourceTree = "<group>"; };
 		EDADD91F1CC2813F00A037E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EDADD9211CC2813F00A037E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EDADD9241CC2813F00A037E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +48,7 @@
 		EDADD9361CC2814000A037E4 /* AppListaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppListaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDADD93A1CC2814000A037E4 /* AppListaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListaUITests.swift; sourceTree = "<group>"; };
 		EDADD93C1CC2814000A037E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDADD9481CC2842900A037E4 /* ListaTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListaTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +100,9 @@
 			isa = PBXGroup;
 			children = (
 				EDADD91A1CC2813F00A037E4 /* AppDelegate.swift */,
-				EDADD91C1CC2813F00A037E4 /* ViewController.swift */,
+				EDADD91C1CC2813F00A037E4 /* AdicionarItemViewController.swift */,
 				EDADD91E1CC2813F00A037E4 /* Main.storyboard */,
+				EDADD9481CC2842900A037E4 /* ListaTableViewController.swift */,
 				EDADD9211CC2813F00A037E4 /* Assets.xcassets */,
 				EDADD9231CC2813F00A037E4 /* LaunchScreen.storyboard */,
 				EDADD9261CC2813F00A037E4 /* Info.plist */,
@@ -256,8 +259,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDADD91D1CC2813F00A037E4 /* ViewController.swift in Sources */,
+				EDADD91D1CC2813F00A037E4 /* AdicionarItemViewController.swift in Sources */,
 				EDADD91B1CC2813F00A037E4 /* AppDelegate.swift in Sources */,
+				EDADD9491CC2842900A037E4 /* ListaTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
