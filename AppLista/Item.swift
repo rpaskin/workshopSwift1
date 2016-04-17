@@ -12,4 +12,7 @@ import CoreData
 class Item: NSManagedObject {
     @NSManaged var nome: String
     @NSManaged var creationDate: NSDate
+    @NSManaged var lat: Double
+    @NSManaged var lng: Double
+    @NSManaged var locationName: String
 }

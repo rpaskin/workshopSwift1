@@ -54,12 +54,11 @@ class ListaTableViewController: UITableViewController {
 
         cell.title!.text = item.nome
         cell.date!.text = formatDate(item.creationDate)
-        cell.location!.text = "TODO"
+        cell.location!.text = item.locationName
 
 //        cell.textLabel!.text = item.nome
 //        cell.detailTextLabel!.text = String(item.creationDate)
 
-        
         // Configure the cell...
 
         return cell
@@ -89,7 +88,7 @@ class ListaTableViewController: UITableViewController {
         return [deleteAction]
     }
     
-    func storeItem(nome: String, creationDate: NSDate = NSDate()){
+    func storeItem(nome: String, creationDate: NSDate = NSDate(), locationName: String?, lat: Double?, lng: Double?){
 
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
@@ -100,6 +99,11 @@ class ListaTableViewController: UITableViewController {
         let item = Item(entity: entity!, insertIntoManagedObjectContext: moc)
         item.nome = nome
         item.creationDate = creationDate
+        if let local = locationName {
+            item.locationName = local
+            item.lat = lat!
+            item.lng = lng!
+        }
         
         do {
             try moc.save()
@@ -144,8 +148,12 @@ class ListaTableViewController: UITableViewController {
             return
         }
     
-        storeItem(itemName)
-//        items.append(Item(nome: itemName))
+
+        //        func storeItem(nome: String, creationDate: NSDate = NSDate(), locationName: String?, lat: Double, lng: Double){
+
+        storeItem(itemName, locationName: sourceVC.locationName, lat: sourceVC.lat, lng: sourceVC.lng)
+
+        //        items.append(Item(nome: itemName))
 
         tableView.reloadData()
     }
