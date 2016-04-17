@@ -7,11 +7,9 @@
 //
 
 import Foundation
+import CoreData
 
-class Item {
-    var nome: String
-    
-    init(nome: String){
-        self.nome = nome
-    }
+class Item: NSManagedObject {
+    @NSManaged var nome: String
+    @NSManaged var creationDate: NSDate
 }

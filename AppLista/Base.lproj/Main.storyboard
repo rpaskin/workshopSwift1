@@ -15,12 +15,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListaPrototypeCell" id="oTV-Jn-ja6">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListaPrototypeCell" textLabel="KIu-EP-QYC" detailTextLabel="Ptn-rk-ukx" style="IBUITableViewCellStyleSubtitle" id="oTV-Jn-ja6">
                                 <rect key="frame" x="0.0" y="92" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oTV-Jn-ja6" id="Cmu-CL-TbC">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KIu-EP-QYC">
+                                            <rect key="frame" x="15" y="5" width="32" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ptn-rk-ukx">
+                                            <rect key="frame" x="15" y="25" width="41" height="14"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -32,7 +48,7 @@
                     <navigationItem key="navigationItem" id="mQ0-X7-NI7">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hxj-Of-AkZ">
                             <connections>
-                                <segue destination="oPB-1f-e2n" kind="modal" id="VdE-8C-foa"/>
+                                <segue destination="oPB-1f-e2n" kind="modal" identifier="listToAddToList" id="VdE-8C-foa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -54,19 +70,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WXT-cO-zFE">
-                                <rect key="frame" x="20" y="109" width="280" height="30"/>
+                                <rect key="frame" x="20" y="72" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="IK2-Re-Smt"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="WXT-cO-zFE" secondAttribute="leading" id="1c4-oX-RiP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="WXT-cO-zFE" secondAttribute="trailing" id="27i-fe-ZIs"/>
-                            <constraint firstItem="WXT-cO-zFE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="D5d-hg-6VA"/>
+                            <constraint firstItem="WXT-cO-zFE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="D5d-hg-6VA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Novo Item" prompt="adicione um novo item na lista" id="H6v-3e-MHX">
+                    <navigationItem key="navigationItem" title="Novo Item" id="H6v-3e-MHX">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="12E-CF-S0h">
                             <connections>
                                 <segue destination="aLq-b9-h5E" kind="unwind" unwindAction="voltaParaLista:" id="dyZ-rW-Ayw"/>
@@ -74,12 +93,12 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="WyQ-tH-e76">
                             <connections>
-                                <segue destination="aLq-b9-h5E" kind="unwind" unwindAction="voltaParaLista:" id="a5Y-JD-EDK"/>
+                                <segue destination="aLq-b9-h5E" kind="unwind" unwindAction="voltaParaLista:" id="Tkc-Sn-ehr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="done" destination="WyQ-tH-e76" id="8se-Ud-T0R"/>
+                        <outlet property="doneBtn" destination="WyQ-tH-e76" id="qH0-gm-4AF"/>
                         <outlet property="newItemText" destination="WXT-cO-zFE" id="QA0-Yx-bky"/>
                     </connections>
                 </viewController>

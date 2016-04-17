@@ -8,12 +8,11 @@
 
 import UIKit
 
-class AdicionarItemViewController: UIViewController {
+class AdicionarItemViewController: UIViewController, UITextFieldDelegate {
 
     var newItem: String?
     
     @IBOutlet weak var doneBtn: UIBarButtonItem!
-
     @IBOutlet weak var newItemText: UITextField!
 
     override func viewDidLoad() {
@@ -21,11 +20,29 @@ class AdicionarItemViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        guard let botao = sender as? UIBarButtonItem where botao == doneButton else {
-            
-        }
+    @IBAction func touchDone(sender: AnyObject) {
 
+        if let text = newItemText.text where !text.isEmpty {
+
+            // performSegueWithIdentifier("listToAddToList", sender: nil)
+
+            newItem = text
+            
+            dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        doneBtn.enabled = true
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        guard let btn = sender as? UIBarButtonItem where btn == doneBtn else {
+            return
+        }
+        if let text = newItemText.text where !text.isEmpty {
+            newItem = text
+        }
     }
 
     override func didReceiveMemoryWarning() {

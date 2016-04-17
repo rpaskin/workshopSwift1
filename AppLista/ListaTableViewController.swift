@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ListaTableViewController: UITableViewController {
 
@@ -15,7 +16,14 @@ class ListaTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        items.appendContentsOf([Item(nome:"Buy Something"), Item(nome:"Sell something"), Item(nome:"Profit!")])
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let moc = appDelegate.managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName: "Item")
+        do {
+            items = try moc.executeFetchRequest(fetchRequest) as! [Item]
+        } catch let err as NSError {
+            print("ERROR fetching local data, se vira! \(err)")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,14 +46,77 @@ class ListaTableViewController: UITableViewController {
         let item = items[indexPath.row]
 
         cell.textLabel!.text = item.nome
+        cell.detailTextLabel!.text = String(item.creationDate)
+       
         
         // Configure the cell...
 
         return cell
     }
 
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+
+        let deleteAction = UITableViewRowAction(style: .Normal, title: "delete") { (action, indexPath) in
+
+            let alert = UIAlertController(title: "Excluir mesmo?", message: nil, preferredStyle: .ActionSheet)
+            
+            let deleteAlert = UIAlertAction(title: "Excluir", style: .Default, handler: { (_) in
+                // self.deleteItem(indexPath)
+            })
+            let cancelAlert = UIAlertAction(title: "Cancelar", style: .Default, handler: nil)
+
+            alert.addAction(deleteAlert)
+            alert.addAction(cancelAlert)
+
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+
+        deleteAction.backgroundColor = UIColor.redColor()
+        
+        return [deleteAction]
+    }
+    
+    
+    func storeItem(nome: String, creationDate: NSDate = NSDate()){
+
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+
+        let moc = appDelegate.managedObjectContext
+
+        let entity = NSEntityDescription.entityForName("Item", inManagedObjectContext: moc)
+
+        let item = Item(entity: entity!, insertIntoManagedObjectContext: moc)
+        item.nome = nome
+        item.creationDate = creationDate
+        
+        do {
+            try moc.save()
+        } catch let err as NSError {
+            print("Não foi possíver armazenar; ERROR: \(err.userInfo), \(err.description), \(err)")
+        }
+
+        items.append(item)
+    }
+    
+    func formatDate(date: NSDate, mask: String = " 'Criado em' dd/MM/yy HH:mm ") -> String {
+        let formatter = NSDateFormatter()
+//        formatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        formatter.dateFormat = mask
+
+        return formatter.stringFromDate(date)
+    }
+    
     @IBAction func voltaParaLista(segue: UIStoryboardSegue) {
-        // TODO
+        let sourceVC = segue.sourceViewController as! AdicionarItemViewController
+        
+        guard let itemName = sourceVC.newItem else {
+            return
+        }
+    
+        storeItem(itemName)
+//        items.append(Item(nome: itemName))
+
+        tableView.reloadData()
     }
     
     /*

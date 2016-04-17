@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED9AF57C1CC3BF7200A81153 /* AppLista.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED9AF57A1CC3BF7200A81153 /* AppLista.xcdatamodeld */; };
 		EDADD91B1CC2813F00A037E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDADD91A1CC2813F00A037E4 /* AppDelegate.swift */; };
 		EDADD91D1CC2813F00A037E4 /* AdicionarItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDADD91C1CC2813F00A037E4 /* AdicionarItemViewController.swift */; };
 		EDADD9201CC2813F00A037E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDADD91E1CC2813F00A037E4 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED9AF57B1CC3BF7200A81153 /* AppLista.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppLista.xcdatamodel; sourceTree = "<group>"; };
 		EDADD9171CC2813F00A037E4 /* AppLista.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppLista.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDADD91A1CC2813F00A037E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDADD91C1CC2813F00A037E4 /* AdicionarItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdicionarItemViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				EDADD91E1CC2813F00A037E4 /* Main.storyboard */,
 				EDADD94A1CC28BFE00A037E4 /* Item.swift */,
 				EDADD9481CC2842900A037E4 /* ListaTableViewController.swift */,
+				ED9AF57A1CC3BF7200A81153 /* AppLista.xcdatamodeld */,
 				EDADD9211CC2813F00A037E4 /* Assets.xcassets */,
 				EDADD9231CC2813F00A037E4 /* LaunchScreen.storyboard */,
 				EDADD9261CC2813F00A037E4 /* Info.plist */,
@@ -264,6 +267,7 @@
 			files = (
 				EDADD94B1CC28BFE00A037E4 /* Item.swift in Sources */,
 				EDADD91D1CC2813F00A037E4 /* AdicionarItemViewController.swift in Sources */,
+				ED9AF57C1CC3BF7200A81153 /* AppLista.xcdatamodeld in Sources */,
 				EDADD91B1CC2813F00A037E4 /* AppDelegate.swift in Sources */,
 				EDADD9491CC2842900A037E4 /* ListaTableViewController.swift in Sources */,
 			);
@@ -490,6 +494,7 @@
 				EDADD9411CC2814000A037E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EDADD9421CC2814000A037E4 /* Build configuration list for PBXNativeTarget "AppListaTests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +503,7 @@
 				EDADD9441CC2814000A037E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EDADD9451CC2814000A037E4 /* Build configuration list for PBXNativeTarget "AppListaUITests" */ = {
 			isa = XCConfigurationList;
@@ -506,8 +512,22 @@
 				EDADD9471CC2814000A037E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		ED9AF57A1CC3BF7200A81153 /* AppLista.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				ED9AF57B1CC3BF7200A81153 /* AppLista.xcdatamodel */,
+			);
+			currentVersion = ED9AF57B1CC3BF7200A81153 /* AppLista.xcdatamodel */;
+			path = AppLista.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EDADD90F1CC2813E00A037E4 /* Project object */;
 }
