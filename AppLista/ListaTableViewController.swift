@@ -8,13 +8,20 @@
 
 import UIKit
 import CoreData
+import CoreLocation
 
 class ListaTableViewController: UITableViewController {
 
     var items = [Item]()
+
     
+    var locationManager = CLLocationManager()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+        locationManager.requestWhenInUseAuthorization()
 
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let moc = appDelegate.managedObjectContext
@@ -41,13 +48,17 @@ class ListaTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ListaPrototypeCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("ListaPrototypeCell", forIndexPath: indexPath) as! ItemCustomTableViewCell
 
         let item = items[indexPath.row]
 
-        cell.textLabel!.text = item.nome
-        cell.detailTextLabel!.text = String(item.creationDate)
-       
+        cell.title!.text = item.nome
+        cell.date!.text = formatDate(item.creationDate)
+        cell.location!.text = "TODO"
+
+//        cell.textLabel!.text = item.nome
+//        cell.detailTextLabel!.text = String(item.creationDate)
+
         
         // Configure the cell...
 
@@ -61,9 +72,11 @@ class ListaTableViewController: UITableViewController {
             let alert = UIAlertController(title: "Excluir mesmo?", message: nil, preferredStyle: .ActionSheet)
             
             let deleteAlert = UIAlertAction(title: "Excluir", style: .Default, handler: { (_) in
-                // self.deleteItem(indexPath)
+                self.deleteItem(indexPath)
             })
-            let cancelAlert = UIAlertAction(title: "Cancelar", style: .Default, handler: nil)
+            let cancelAlert = UIAlertAction(title: "Cancelar", style: .Default, handler: { (_) in
+                tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Right)
+            })
 
             alert.addAction(deleteAlert)
             alert.addAction(cancelAlert)
@@ -75,7 +88,6 @@ class ListaTableViewController: UITableViewController {
         
         return [deleteAction]
     }
-    
     
     func storeItem(nome: String, creationDate: NSDate = NSDate()){
 
@@ -102,8 +114,27 @@ class ListaTableViewController: UITableViewController {
         let formatter = NSDateFormatter()
 //        formatter.dateStyle = NSDateFormatterStyle.ShortStyle
         formatter.dateFormat = mask
+        //        return formatter.stringFromDate(date)
 
-        return formatter.stringFromDate(date)
+        let interval: NSTimeInterval = -1 * date.timeIntervalSinceNow
+        let intervalstring = interval.remainingTime
+        
+        return "\(intervalstring) ago"
+
+    }
+
+    func deleteItem(index:NSIndexPath){
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let moc = appDelegate.managedObjectContext
+        moc.deleteObject(items[index.row] as NSManagedObject)
+        items.removeAtIndex(index.row)
+        do {
+            try moc.save()
+        } catch {
+            print("Não foi possível deletar a tarefa \(error)")
+        }
+        print("line 118: \(index.row)")
+        tableView.deleteRowsAtIndexPaths([index], withRowAnimation: .Fade)
     }
     
     @IBAction func voltaParaLista(segue: UIStoryboardSegue) {
@@ -154,14 +185,31 @@ class ListaTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let destinationNVC = segue.destinationViewController as! UINavigationController
+        let destinationVC = destinationNVC.topViewController as! AdicionarItemViewController
+        destinationVC.locationManager = self.locationManager        
     }
-    */
 
 }
+
+extension NSTimeInterval {
+    struct DateComponents {
+        static let formatter = NSDateComponentsFormatter()
+    }
+    var remainingTime: String {
+        DateComponents.formatter.calendar = NSCalendar(identifier: NSCalendarIdentifierISO8601)!
+        DateComponents.formatter.unitsStyle = .Full
+        DateComponents.formatter.includesApproximationPhrase = false
+        DateComponents.formatter.includesTimeRemainingPhrase = false
+        DateComponents.formatter.maximumUnitCount = 2
+        DateComponents.formatter.zeroFormattingBehavior = .Default
+        DateComponents.formatter.allowsFractionalUnits = false
+        DateComponents.formatter.allowedUnits = [.Year, .Month, .Weekday, .Day, .Hour, .Minute] // , .Second]
+        return DateComponents.formatter.stringFromTimeInterval(self) ?? ""
+    }
+}
+

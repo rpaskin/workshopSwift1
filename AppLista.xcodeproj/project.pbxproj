@@ -17,6 +17,7 @@
 		EDADD93B1CC2814000A037E4 /* AppListaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDADD93A1CC2814000A037E4 /* AppListaUITests.swift */; };
 		EDADD9491CC2842900A037E4 /* ListaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDADD9481CC2842900A037E4 /* ListaTableViewController.swift */; };
 		EDADD94B1CC28BFE00A037E4 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDADD94A1CC28BFE00A037E4 /* Item.swift */; };
+		EDDC829F1CC3FCD4008E30C1 /* ItemCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDC829E1CC3FCD4008E30C1 /* ItemCustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		EDADD93C1CC2814000A037E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDADD9481CC2842900A037E4 /* ListaTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListaTableViewController.swift; sourceTree = "<group>"; };
 		EDADD94A1CC28BFE00A037E4 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		EDDC829E1CC3FCD4008E30C1 /* ItemCustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				EDADD91A1CC2813F00A037E4 /* AppDelegate.swift */,
 				EDADD91C1CC2813F00A037E4 /* AdicionarItemViewController.swift */,
 				EDADD91E1CC2813F00A037E4 /* Main.storyboard */,
+				EDDC829E1CC3FCD4008E30C1 /* ItemCustomTableViewCell.swift */,
 				EDADD94A1CC28BFE00A037E4 /* Item.swift */,
 				EDADD9481CC2842900A037E4 /* ListaTableViewController.swift */,
 				ED9AF57A1CC3BF7200A81153 /* AppLista.xcdatamodeld */,
@@ -270,6 +273,7 @@
 				ED9AF57C1CC3BF7200A81153 /* AppLista.xcdatamodeld in Sources */,
 				EDADD91B1CC2813F00A037E4 /* AppDelegate.swift in Sources */,
 				EDADD9491CC2842900A037E4 /* ListaTableViewController.swift in Sources */,
+				EDDC829F1CC3FCD4008E30C1 /* ItemCustomTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

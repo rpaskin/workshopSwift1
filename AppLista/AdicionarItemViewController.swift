@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class AdicionarItemViewController: UIViewController, UITextFieldDelegate {
 
@@ -14,6 +15,7 @@ class AdicionarItemViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var doneBtn: UIBarButtonItem!
     @IBOutlet weak var newItemText: UITextField!
+    var locationManager: CLLocationManager!
 
     override func viewDidLoad() {
         super.viewDidLoad()
